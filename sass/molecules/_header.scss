@@ -1,0 +1,311 @@
+//molecules
+@mixin header {
+	@include flex-column;
+	background: $header-background url("img") no-repeat center center fixed;
+	background-size: cover;
+}
+
+@mixin header-container {
+	h2 {
+		margin-top: 0;
+	}
+
+	.banner-container {
+		color: white;
+		text-align: center;
+		flex: 1;
+		@include flex-column;
+		justify-content: center;
+	}
+
+	.division {
+		@include vertical-line;
+	}
+}
+
+@mixin header-box {
+	.featured {
+		align-items: center;
+		//height: 100%;
+		width: 90%;
+		margin: 2rem auto;
+		justify-content: center;
+	}
+
+	.featured-box {
+		flex: 1;
+	}
+
+	.featured-description {
+		margin: auto;
+		height: 3.5rem;
+		width: 50%;
+		@include text-overflow-hidden;
+		color: rgb(223, 223, 223);
+	}
+}
+
+@mixin header-bar {
+	.top-bar {
+		display: block;
+		border-bottom: 2px solid $translucid;
+		@include flex-row;
+		justify-content: space-between;
+		align-items: center;
+		transition: all 1s ease-in-out;
+	}
+
+	.nav-list {
+		transition: all 1s ease-in-out;
+	}
+
+	.bar-item {
+		transition: all 0.5s;
+		white-space: nowrap;
+	}
+}
+
+@mixin header-bar-button {
+	#btn {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		right: 30px;
+		background: none;
+		cursor: pointer;
+		border: none;
+		outline: none;
+		z-index: 10;
+	}
+
+	#btn:hover span::before {
+		width: 100%;
+	}
+
+	#btn.on {
+		position: fixed;
+	}
+
+	#btn span {
+		position: absolute;
+		width: 40px;
+		height: 5px;
+		top: 50%;
+		left: 50%;
+		background: white;
+		border-radius: 2px;
+		overflow: hidden;
+		transition: all 0.3s linear;
+	}
+
+	#btn span::before {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: $hover;
+		transition: all 0.3s linear;
+	}
+
+	#btn span:nth-child(1) {
+		animation: span-first-off 0.5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+
+	#btn span:nth-child(2) {
+		animation: span-second-off 0.5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+
+	#btn span:nth-child(3) {
+		animation: span-third-off 0.5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+
+	#btn.on:hover span::before {
+		width: 100%;
+		transition: all 0.3s linear;
+	}
+
+	#btn.on span:nth-child(1) {
+		animation: span-first-on 0.5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+
+	#btn.on span:nth-child(2) {
+		animation: span-second-on 0.5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+
+	#btn.on span:nth-child(3) {
+		animation: span-third-on 0.5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes span-first-on {
+		0% {
+			transform: translate(-50%, -300%);
+		}
+
+		30% {
+			transform: translate(-50%, -50%);
+		}
+
+		100% {
+			transform: translate(-50%, -50%) rotate(-45deg);
+		}
+	}
+
+	@keyframes span-first-off {
+		0% {
+			transform: translate(-50%, -50%) rotate(-45deg);
+		}
+
+		30% {
+			transform: translate(-50%, -50%) rotate(0deg);
+		}
+
+		100% {
+			transform: translate(-50%, -300%);
+		}
+	}
+
+	@keyframes span-second-on {
+		0% {
+			transform: translate(-50%, -50%);
+		}
+
+		25% {
+			background: gray;
+		}
+
+		50% {
+			transform: translate(-50%, -50%) scale(1);
+		}
+
+		100% {
+			transform: translate(-150%, -50%) scale(0);
+		}
+	}
+
+	@keyframes span-second-off {
+		0% {
+			transform: translate(-150%, -50%) scale(0);
+		}
+
+		25% {
+			background: gray;
+		}
+
+		50% {
+			transform: translate(-50%, -50%) scale(1);
+		}
+
+		100% {
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	@keyframes span-third-on {
+		0% {
+			transform: translate(-50%, 200%);
+		}
+
+		30% {
+			transform: translate(-50%, -50%);
+		}
+
+		100% {
+			transform: translate(-50%, -50%) rotate(45deg);
+		}
+	}
+
+	@keyframes span-third-off {
+		0% {
+			transform: translate(-50%, -50%) rotate(45deg);
+		}
+
+		30% {
+			transform: translate(-50%, -50%) rotate(0deg);
+		}
+
+		100% {
+			transform: translate(-50%, 200%);
+		}
+	}
+}
+
+//media query
+@mixin header-query-desktop {
+	.header {
+		height: 100%;
+	}
+
+	.featured {
+		@include flex-row;
+	}
+
+	.top-bar {
+		margin: 0 10%;
+	}
+
+	.toggle-button {
+		display: none;
+	}
+
+	.bar-item {
+		font-size: 1.2rem;
+		display: inline-block;
+	}
+}
+
+@mixin header-query-mobile {
+	.banner-title {
+		margin: 0;
+	}
+
+	.banner-container {
+		margin: 30px auto;
+	}
+
+	.featured-box {
+		width: 80%;
+		margin: 30px auto;
+	}
+
+	.top-bar {
+		margin: 0;
+		padding: 0 1%;
+	}
+
+	.nav-list {
+		display: block;
+		width: 0;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		right: 0;
+		overflow-x: hidden;
+		padding-top: 60px;
+		box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+		background: $contrast;
+		height: 100%;
+	}
+
+	.bar-item {
+		font-size: 2rem;
+		display: block;
+		text-indent: 40px;
+
+		&:hover {
+			text-indent: 20px;
+		}
+	}
+
+	.side-bar {
+		position: fixed;
+		width: 250px;
+	}
+}

@@ -1,0 +1,22 @@
+//organelles
+.header {
+	@include reset;
+	@include header;
+	@include header-box;
+	@include header-bar;
+	@include header-container;
+	//@include header-background;
+	@include header-bar-button;
+}
+//main
+.articles-showcase {
+	@include content;
+	@include articles;
+}
+//footer/contact
+footer {
+	@include footer;
+	@include footer-form;
+	@include footer-input;
+	@include footer-align;
+}

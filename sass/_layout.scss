@@ -1,0 +1,30 @@
+html,
+body {
+	height: 100%;
+	color: white;
+	@include reset;
+	font-size: 16px;
+}
+
+body {
+	@include titles;
+	@include input-design;
+	@include default-style;
+	@include button;
+}
+
+.center {
+	@include center;
+}
+
+@media screen and (min-width: 980px) {
+	@include header-query-desktop;
+	@include main-query-desktop;
+	@include footer-query-desktop;
+}
+
+@media screen and (max-width: 980px) {
+	@include header-query-mobile;
+	@include main-query-mobile;
+	@include footer-query-mobile;
+}

@@ -1,0 +1,51 @@
+@mixin footer {
+	background-color: $contrast;
+	min-height: 100%;
+	padding: 10px;
+}
+
+@mixin footer-form {
+	legend {
+		text-align: center;
+		padding: 40px;
+	}
+
+	.contact-field {
+		border: none;
+		display: block;
+		padding: 0;
+		margin: 0;
+	}
+
+	.contact-form {
+		margin: 0 10%;
+	}
+}
+
+@mixin footer-input {
+	.input-item {
+		flex: 1;
+	}
+}
+
+@mixin footer-align {
+	.footer-spacing {
+		margin: 20px;
+	}
+
+	.footer-center {
+		margin: 25px;
+		text-align: center;
+	}
+}
+
+//media query
+@mixin footer-query-desktop {
+	.input-group {
+		@include flex-row;
+		justify-content: center;
+		align-content: center;
+	}
+}
+
+@mixin footer-query-mobile {}
